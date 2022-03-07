@@ -4,7 +4,6 @@ import skfem as fem
 from plot_vec3d import set_equal_aspect, hide_ticks
 
 eps = np.finfo(float).eps
-mesh_ref = fem.MeshTri.init_refdom()
 
 def plot_cross_sec(u, ps, basis):
     '''Plot cross section of u over the line segment with end points given by ps
@@ -30,7 +29,7 @@ def plot_facet_vals(u, basis):
     '''Plot cross sections of u over each facet
         This works only on the mesh given by init_refdom()
     '''
-    for facet in mesh_ref.facets.T:
+    for facet in basis.mesh.facets.T:
         plot_cross_sec(u, basis.mesh.p[:, facet], basis)
 
 def plot_nodal_vals(u, basis):
